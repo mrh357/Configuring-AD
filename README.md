@@ -32,6 +32,7 @@ This tutorial outlines the implementation of on-premises Active Directory within
 - Use the admin account to join the client to the domain, and enable normal domain users to use Remote Desktop Protocol (RDP) to access the client.
 - Use a script in Powershell ise to create 1000+ users.
 - Create a new security group to assign a some users to
+- Configure file shares and assign permissions to users
 
 <h2>Deployment and Configuration Steps</h2>
 
@@ -408,6 +409,215 @@ This tutorial outlines the implementation of on-premises Active Directory within
 10\. Log out of the client and log in as your new user.
 
 ![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-06/9be75825-3c24-49c0-8bca-7ecd747e21e8/screenshot.jpeg?tl_px=616,293&br_px=1763,934&force_format=png&width=1120.0)
+
+<h2>Configuring and using file share</h2>
+
+1\. In the server, open up file explorer and go to the C drive.
+
+![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-09/e783683e-adea-4bf3-8158-92a8f3b92367/screenshot.jpeg?tl_px=147,0&br_px=1866,961&force_format=png&width=1120.0)
+
+
+2\. Create 4 folders: 'read-access', 'write-access', 'no-access', and 'accounting'
+
+![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-09/11691e9d-4036-4607-833d-e7211649eca0/screenshot.jpeg?tl_px=532,454&br_px=1392,935&force_format=png&width=860&wat_scale=76&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=402,212)
+
+
+3\. In the read-access folder, create a document , type whatever, and save it.
+
+![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-09/73dbf7ed-3fe2-4b77-91b7-9ae26bd070b1/screenshot.jpeg?tl_px=654,336&br_px=1514,817&force_format=png&width=860&wat_scale=76&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=402,212)
+
+
+4\. In write-access, create a document and write whatever you want in it.
+
+![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-09/329989c5-8e92-4c80-a592-68881ee7796e/screenshot.jpeg?tl_px=690,203&br_px=1550,684&force_format=png&width=860&wat_scale=76&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=402,212)
+
+
+5\. In no-access, create a document with a message in it.
+
+![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-09/48b7e9f0-cd26-44c7-8396-80d5fc11f46a/screenshot.jpeg?tl_px=511,345&br_px=1371,826&force_format=png&width=860&wat_scale=76&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=402,212)
+
+
+6\. In accounting, create a document and put some numbers in it.
+
+![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-09/72d1b3a7-7d8f-45e5-b719-e106e3de570a/screenshot.jpeg?tl_px=740,357&br_px=1600,838&force_format=png&width=860&wat_scale=76&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=402,212)
+
+
+7\. Open up AD users and computers, and click on your domain. click on create a new security group
+
+![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-09/a9c53d66-fb6d-44e2-8889-7d9757a964ee/screenshot.jpeg?tl_px=0,0&br_px=859,480&force_format=png&width=860&wat_scale=76&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=373,132)
+
+
+8\. Name it 'Accountants', click ok
+
+![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-09/cc609980-fe77-412b-b1e9-20c8a0fe1da1/screenshot.jpeg?tl_px=154,320&br_px=1014,801&force_format=png&width=860&wat_scale=76&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=402,212)
+
+
+9\. Right click on 'Read-access' and click on properties
+
+![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-09/2bb2859b-3ec0-45d2-85de-edea80e0a9dd/screenshot.jpeg?tl_px=535,413&br_px=1395,894&force_format=png&width=860&wat_scale=76&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=402,212)
+
+
+10\. Go to advanced sharing
+
+![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-09/f60481ba-4aa6-46e4-9abd-26aaefd6498c/screenshot.jpeg?tl_px=566,677&br_px=1549,1226&force_format=png&width=983&wat_scale=87&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=459,243)
+
+
+11\. Click on share this folder, and click on permissions
+
+![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-09/27918fa1-de0c-40b4-9290-f10869502a86/screenshot.jpeg?tl_px=567,709&br_px=1550,1258&force_format=png&width=983&wat_scale=87&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=459,243)
+
+
+12\. Remove 'Everyone', then click add
+
+![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-09/f3c6a678-ab23-4290-8ddf-20e9c4f12d04/screenshot.jpeg?tl_px=786,663&br_px=1646,1144&force_format=png&width=860&wat_scale=76&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=402,212)
+
+
+13\. Type 'Domain users', click check name and click ok.
+
+![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-09/ce3fbc1d-e9b5-40cc-903e-437742fdc5f3/screenshot.jpeg?tl_px=874,725&br_px=1734,1206&force_format=png&width=860&wat_scale=76&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=402,212)
+
+
+14\. Repeat to add 'Domain Admins'
+
+![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-09/e67911fb-2564-4f42-bdce-ac8a0c898fa4/screenshot.jpeg?tl_px=899,714&br_px=1759,1195&force_format=png&width=860&wat_scale=76&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=402,212)
+
+
+15\. Click on Domain Admins, and give full control
+
+![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-09/2c702009-95f8-4419-8a84-6440de2a4ba9/screenshot.jpeg?tl_px=689,573&br_px=1549,1054&force_format=png&width=860&wat_scale=76&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=402,212)
+
+
+16\. Click on domain users and give them only read permissions, click ok
+
+![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-09/83506a1d-fd7f-434a-9f1b-7cd842aae8a9/screenshot.jpeg?tl_px=592,799&br_px=1739,1440&force_format=png&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=523,286)
+
+
+17\. Click ok, and then close
+
+![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-09/00782ef2-8308-4d66-805b-3d41e23ab968/screenshot.jpeg?tl_px=686,877&br_px=1546,1358&force_format=png&width=860&wat_scale=76&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=402,212)
+
+
+18\. Repeat the above setps for 'write-access'
+
+![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-09/43b6645e-bef0-40dd-a2b5-b12aa389a341/screenshot.jpeg?tl_px=779,764&br_px=1639,1245&force_format=png&width=860&wat_scale=76&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=402,212)
+
+
+19\. The only difference would be to give Domain users full control.
+
+![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-09/01d8b5cd-8ed1-4759-8caf-4b0db172175a/screenshot.jpeg?tl_px=743,652&br_px=1603,1133&force_format=png&width=860&wat_scale=76&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=402,212)
+
+
+20\. Repeat the above steps for 'no-access', except only add Domain admins, and give full control.
+
+![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-09/d244aae8-3b7d-4d72-9a84-3891923b4218/screenshot.jpeg?tl_px=675,678&br_px=1535,1159&force_format=png&width=860&wat_scale=76&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=402,212)
+
+
+21\. Repeat the above steps for 'accounting', except add accountants and domain admins and give them full control.
+
+![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-09/c23bf368-6864-4206-8cdc-a8a5fe634fdf/screenshot.jpeg?tl_px=773,551&br_px=1633,1032&force_format=png&width=860&wat_scale=76&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=402,212)
+
+
+22\. In the client, open file explorer and in the address bar type '\dc1' (or whatever you server's name is)
+
+![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-06/6187cd07-4cc6-49fc-b459-dd09d3963812/screenshot.jpeg?tl_px=0,0&br_px=1719,961&force_format=png&width=1120.0)
+
+
+23\. Double click read-access
+
+![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-06/cb625c1b-71eb-4b55-a1f0-a0fad81600fd/screenshot.jpeg?tl_px=790,157&br_px=1650,638&force_format=png&width=860&wat_scale=76&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=402,212)
+
+
+24\. Open the file and type an addition to the doc. attempt to save and youi should get an error
+
+![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-06/0338ae44-a5a2-416d-9745-31a4e3d1951d/screenshot.jpeg?tl_px=1022,551&br_px=1882,1032&force_format=png&width=860&wat_scale=76&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=402,212)
+
+
+25\. Back to the network share, try to open the no access folder
+
+![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-06/6307f616-1d31-4683-a6e3-3c71e0b35c4e/screenshot.jpeg?tl_px=545,141&br_px=1405,622&force_format=png&width=860&wat_scale=76&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=402,212)
+
+
+26\. You should get an error
+
+![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-06/09423574-ee67-45c8-b1db-4e21597dfc09/screenshot.jpeg?tl_px=1053,503&br_px=1913,984&force_format=png&width=860&wat_scale=76&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=402,212)
+
+
+27\. Go back to the file share and open the write-access folder.
+
+![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-06/bce93070-52d9-49e6-bd2d-a8def00eef08/screenshot.jpeg?tl_px=280,163&br_px=1140,644&force_format=png&width=860&wat_scale=76&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=402,212)
+
+
+28\. Open the doc and add something to it and save.
+
+![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-06/8bac03ca-ff04-4b9b-b03b-6f806df4cdb8/screenshot.jpeg?tl_px=280,169&br_px=1140,650&force_format=png&width=860&wat_scale=76&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=402,212)
+
+
+29\. Try to access the accounting folder
+
+![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-06/fc5ecdf5-d6f9-408f-ac91-48cbcb3f759d/screenshot.jpeg?tl_px=305,151&br_px=1165,632&force_format=png&width=860&wat_scale=76&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=402,212)
+
+
+30\. You should get an error.
+
+![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-06/86b800c4-ecb3-4ffe-ad6e-81bd8b9e0ce5/screenshot.jpeg?tl_px=1058,493&br_px=1918,974&force_format=png&width=860&wat_scale=76&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=402,212)
+
+
+31\. Back in your server, you can navigate to the c drive and look in the write folder
+
+![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-06/e05ef1eb-7270-45a7-881c-d98f3e23bc10/screenshot.jpeg?tl_px=621,959&br_px=1481,1440&force_format=png&width=860&wat_scale=76&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=402,337)
+
+
+32\. Open the doc and see the message to your self.
+
+![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-06/dac35c12-c84f-4750-a7f2-c026ec99d81c/screenshot.jpeg?tl_px=266,0&br_px=2560,1281&force_format=png&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=885,96)
+
+
+33\. Log out of the client and reconnect with RDP
+
+![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-06/ccfb0fef-f95e-4387-8739-8d4e39aabb2e/screenshot.jpeg?tl_px=913,276&br_px=1773,757&force_format=png&width=860&wat_scale=76&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=402,212)
+
+
+34\. Log in with the accountant credentials
+
+![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-06/5b2cb8d5-3d40-4969-b97a-6ae4ba4b7bc6/screenshot.jpeg?tl_px=303,142&br_px=2022,1103&force_format=png&width=1120.0)
+
+
+35\. Type "\dc1" to navigate to the file share
+
+![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-06/fe805639-153e-4196-aeef-1baaa3cfb913/screenshot.jpeg?tl_px=139,0&br_px=1858,961&force_format=png&width=1120.0)
+
+
+36\. Navigate to the accounting folder
+
+![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-06/20477118-d52a-4e8d-a507-eb927dac97f2/screenshot.jpeg?tl_px=601,284&br_px=1461,765&force_format=png&width=860&wat_scale=76&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=402,212)
+
+
+37\. Add to the doc if you want. You can also double check the other folders work as intended with this user
+
+![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-06/d29c7dac-87cc-4260-972d-a913237b362d/screenshot.jpeg?tl_px=130,51&br_px=1850,1012&force_format=png&width=1120.0)
+
+
+38\. Go back to the server
+
+![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-06/32fb196f-f673-4986-bd77-d6f6eabff26d/screenshot.jpeg?tl_px=662,959&br_px=1522,1440&force_format=png&width=860&wat_scale=76&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=402,366)
+
+
+39\. Navigate to the c drive
+
+![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-06/b1f516a5-b341-4ab6-96ca-3e4d0a5884e4/screenshot.jpeg?tl_px=540,216&br_px=1400,697&force_format=png&width=860&wat_scale=76&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=402,212)
+
+
+40\. Go into accounting
+
+![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-06/9cd6cdd8-dad6-41e7-a30b-d3f76ea466ba/screenshot.jpeg?tl_px=532,287&br_px=1392,768&force_format=png&width=860&wat_scale=76&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=402,212)
+
+
+41\. Open the document and see the updates to confirm it works
+
+![](https://ajeuwbhvhr.cloudimg.io/colony-recorder.s3.amazonaws.com/files/2023-11-06/09ea707b-9371-4702-a44f-ba9ab8621476/screenshot.jpeg?tl_px=266,0&br_px=2560,1281&force_format=png&width=1120.0&wat=1&wat_opacity=0.7&wat_gravity=northwest&wat_url=https://colony-recorder.s3.us-west-1.amazonaws.com/images/watermarks/FB923C_standard.png&wat_pad=887,102)
+
+
+
 
 
 
